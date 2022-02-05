@@ -14,16 +14,10 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.populateDefaultTodos();
     this.getTodoStatus();
 
-    setTimeout(() => {
-      this.getTodoList();
-    }, 500);
-  }
+    this.getTodoList();
 
-  populateDefaultTodos() {
-    this.todoService.populateDefaultTodos();
   }
 
   getTodoList() {
@@ -50,7 +44,7 @@ export class TodoListComponent implements OnInit {
   }
 
   toggleTodo(todo: Todo) {
-    this.todoService.toggleCompleted(todo);
+    this.todoService.toggleTodo(todo);
   }
 
   deleteTodo(id: number) {

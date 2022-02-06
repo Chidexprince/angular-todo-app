@@ -15,16 +15,13 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTodoStatus();
-
-    this.getTodoList();
-
   }
 
   getTodoList() {
-    this.todoList = [];
-    this.todoService.getTodos()
+    this.todoList = []; // ensure the array is empty initially
+    this.todoService.getTodos() // get all todos from the service
       .forEach(t => {
-        if (t) {
+        if (t) {                // loop through each item and push into the array
           const todo = new Todo();
           Object.assign(todo, t);
           this.todoList.push(todo);
@@ -34,6 +31,7 @@ export class TodoListComponent implements OnInit {
 
   }
 
+  // we subscribe to this observable to always receive status of the todo list so updates can be updated,  we add it to the ngOninit()
   getTodoStatus() {
     this.todoService.getTodoStatus()
       .subscribe(data => {
@@ -43,13 +41,16 @@ export class TodoListComponent implements OnInit {
     })
   }
 
+  // toggle todo
+
   toggleTodo(todo: Todo) {
     this.todoService.toggleTodo(todo);
   }
 
+  // delete
   deleteTodo(id: number) {
-    this.todoService.deleteTodo(id);
-    this.todoService.updateTodoStatus('DELETE');
+    this.todoService.deleteTodo(id); // pass id of todo to be deleted to the method
+    this.todoService.updateTodoStatus('DELETE'); // update the subject
   }
 
 

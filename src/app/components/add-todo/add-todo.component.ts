@@ -16,9 +16,9 @@ export class AddTodoComponent implements OnInit {
   }
 
   addTodo() {
-    if (!this.todo.description || this.todo.description.trim() === '') {
-      return
-    }
+    // if (!this.todo.description || this.todo.description.trim() === '') {
+    //   return
+    // }
 
     this.todoService.addTodo(this.todo);
     this.todoService.updateTodoStatus('ADD');

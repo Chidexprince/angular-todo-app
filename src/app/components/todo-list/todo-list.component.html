@@ -3,9 +3,11 @@
   <div class="app-container" id="taskList">
     <h1 class="app-header">TO DO LIST</h1>
     <app-add-todo></app-add-todo>
+    <!--We show this when there is no data available  -->
     <div class="empty-state" *ngIf="todoList.length < 1">
       No items added yet
     </div>
+
     <ul class="task-list">
 
       <li class="task-list-item" *ngFor="let todo of todoList" >
